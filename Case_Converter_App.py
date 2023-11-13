@@ -2,6 +2,7 @@ import tkinter as ui
 from tkinter import ttk
 import tkinter.font 
 import pygame
+from tkinter import Tk
 from threading import Thread
 
 window=ui.Tk()
@@ -59,7 +60,12 @@ def alternatingcase():
 def reset():
     e1.delete(0,ui.END)
 
-
+def copytext():
+    text=e1.get()
+    r=Tk()
+    r.clipboard_append(text)
+    r.update()
+    r.destroy()
 
 bframe=ui.Frame(window)
 b1=ui.Button(bframe,text="lower case", width=14, height=2, bg="#c92292", fg="black",command=lowercase)
@@ -68,7 +74,7 @@ b3=ui.Button(bframe,text="Title Case", width=14, height=2, bg="#c92292", fg="bla
 b4=ui.Button(bframe,text="Sentence case", width=14, height=2, bg="#c92292", fg="black",command=sentencecase)
 b5=ui.Button(bframe,text="aLtErNaTiNg CaSe", width=14, height=2, bg="#c92292", fg="black",command=alternatingcase)
 b6=ui.Button(bframe,text="Reset", width=14, height=2, bg="#c92292", fg="black",command=reset)
-b7=ui.Button(bframe,text="Copy Text", width=14, height=2, bg="#c92292", fg="black")
+b7=ui.Button(bframe,text="Copy Text", width=14, height=2, bg="#c92292", fg="black",command=copytext)
 b8=ui.Button(bframe,text="Mute/Unmute", width=14, height=2, bg="#c92292", fg="black",command=stop)
 b1.grid(row=0,column=0,padx=5,pady=5)
 b2.grid(row=0,column=1,padx=5,pady=5)
