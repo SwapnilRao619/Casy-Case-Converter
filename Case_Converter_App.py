@@ -4,9 +4,16 @@ import tkinter.font
 import pygame
 from tkinter import Tk
 from threading import Thread
+import keyboard
 
 global count
 count=0
+
+def on_key_event(e):
+    global count
+    count += 1
+
+keyboard.hook(on_key_event)
 
 window=ui.Tk()
 window.geometry("400x420")
