@@ -5,6 +5,9 @@ import pygame
 from tkinter import Tk
 from threading import Thread
 
+global count
+count=0
+
 window=ui.Tk()
 window.geometry("400x420")
 window.title("Casy: Case Converter")
@@ -24,11 +27,9 @@ pygame.mixer.init()
 mt=Thread(target=music)
 mt.start()
 
-l1=ui.Label(window, text="Enter the text that has to be converted:", foreground="black", background="yellow",width=50, height=2, font=('Helvetica bold', 12))
-l1.pack()
-
 e1=ui.Entry(window, fg="white", bg="#fc03a9",width=59, font=('Helvetica bold', 26))
-e1.pack(ipady=50, pady=15)
+e1.pack(ipady=50, pady=20)
+e1.insert(0,'Enter the text here...')
 
 def lowercase():
     text=e1.get()
@@ -58,14 +59,20 @@ def alternatingcase():
     text=e1.get()
 
 def reset():
+    global count
     e1.delete(0,ui.END)
+    count+=1
 
 def copytext():
-    text=e1.get()
-    r=Tk()
-    r.clipboard_append(text)
-    r.update()
-    r.destroy()
+    global count
+    if count==0:
+        pass
+    else:
+        text=e1.get()
+        r=Tk()
+        r.clipboard_append(text)
+        r.update()
+        r.destroy()
 
 bframe=ui.Frame(window)
 b1=ui.Button(bframe,text="lower case", width=14, height=2, bg="#c92292", fg="black",command=lowercase)
