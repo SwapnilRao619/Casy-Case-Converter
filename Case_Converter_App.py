@@ -57,6 +57,16 @@ def sentencecase():
 
 def alternatingcase():
     text=e1.get()
+    i=0
+    ntext=""
+    for c in text:
+        if i%2==0:
+            ntext+=c.lower()
+        else:
+            ntext+=c.upper()
+        i+=1
+    e1.delete(0,ui.END)
+    e1.insert(0,ntext)
 
 def reset():
     global count
