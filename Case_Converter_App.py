@@ -9,11 +9,11 @@ import keyboard
 global count
 count=0
 
-def on_key_event(e):
+def event(e):
     global count
     count += 1
 
-keyboard.hook(on_key_event)
+keyboard.hook(event)
 
 window=ui.Tk()
 window.geometry("400x420")
